@@ -10,7 +10,7 @@
   - Neighborhood rating
   - Proximity to services
   To collect this data we will scrape the Zillow Website and/or use an API.
-- Modelling:
-- Visualization:
-- Test Plan:
+- Modelling: We plan on modeling the data by fitting a linear model (linear regression) to predict housing prices based on features such as location, size, and number of rooms.
+- Visualization: We plan to visualize the data using a scatter plot to show the relationship between square footage and price, and a heatmap to illustrate correlations between features. 
+- Test Plan: We plan to use an 80/20 train-test split, where 80% of the data will be used to train the model, and the remaining 20% will be used to test the model's performance. Additionally, we may use cross-validation to further assess the model’s accuracy across different subsets of the data.
 
