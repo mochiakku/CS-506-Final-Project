@@ -21,3 +21,4 @@ To process the textual data we will use NLP libraries like NLTK or TextBlob.
 - Visualization: We plan to visualize the data using a scatter plot to show the relationship between square footage and price, and a heatmap to illustrate correlations between features. We will add Clustering Visualization to map out neighborhoods and show clusters based on features like price, crime rate, and amenities.
 - Test Plan: We plan to use an 80/20 train-test split, where 80% of the data will be used to train the model, and the remaining 20% will be used to test the model's performance. Additionally, we may use cross-validation to further assess the model’s accuracy across different subsets of the data.
 
+https://youtu.be/gFyMkkLTR7I
