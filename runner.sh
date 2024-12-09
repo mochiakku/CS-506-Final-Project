@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT="runner.py"
+SCRIPT="redfin-process.py"
 
 locations() {
     relay_list=$(mullvad relay list)

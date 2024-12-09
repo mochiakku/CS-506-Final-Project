@@ -317,7 +317,7 @@ def main():
     
     # Load and preprocess data
     print("\nStep 1: Loading and preprocessing data...")
-    pipeline.load_and_preprocess_data('processed_listings.csv')
+    pipeline.load_and_preprocess_data('redfin_processed_listings.csv')
     
     # Train and evaluate models
     print("\nStep 2: Training and evaluating models...")

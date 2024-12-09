@@ -17,7 +17,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 
 
 INPUT_CSV = 'redfin_boston_links.csv' 
-OUTPUT_CSV = 'processed_listings.csv'
+OUTPUT_CSV = 'redfin_processed_listings.csv'
 HEADLESS = True        
 LOG_FILE = 'process.log' 
 MAX_RETRIES = 3     

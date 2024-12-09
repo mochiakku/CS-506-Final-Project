@@ -19,11 +19,11 @@ processed_listings.csv. Key features include:
   - Initially, we planned to obtain the data from Zillow, however, Redfin had fewer protections regarding web scraping; no captcha, and less IP limiting, as well as a better page layout to perform the scraping.
 
 - Data Collection
-  - To collect the data, we used Selenium WebDriver to scrape the data from Redfin.
-  - We first designed the web scraper (scrape.py), where we implemented pagination handling to collect links from all available pages.
+  - To collect the data, we used Selenium WebDriver alongside with Mullvad to rotate IP's to scrape the data from Redfin.
+  - We first designed the web scraper (redfin-scrape.py && redfin-process.py && runner.sh), where we implemented pagination handling to collect links from all available pages.
   - We stored these links in links.csv with unique indices.
   - Used Firefox WebDriver with appropriate wait times to ensure reliable data collection.
-  - Then we designed runner.py to actually scrape the individual information of each lisitng.
+  - Then we designed redfin-scrape.py && redfin-process.py to actually scrape the individual information of each lisitng.
 
 - Data Cleaning
   - Numerical features processing
