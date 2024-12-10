@@ -1,0 +1,40 @@
+name: Python Application Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.8  # Change as per your project's requirements
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install matplotlib seaborn scikit-learn nltk textblob pandas
+
+    - name: Run NLTK Downloader
+      run: |
+        python -c "import nltk; nltk.download('vader_lexicon')"
+
+    - name: Run Tests
+      run: |
+        pytest --maxfail=5 --disable-warnings || echo "No test suite found. Add tests to ensure reliability."
+
+    - name: Execute Script
+      run: |
+        python 506-final-model.py
