@@ -40,60 +40,44 @@ processed_listings.csv. Key features include:
       - Additional amenities
     - Cleaned and standardized property descriptions
     - Extracted and separated walk, transit, and bike scores from the walkscore text
+  -  This process also enabled sentiment analysis by preparing the text for NLP tools.
 - Preliminary Visualization
-  - Dataset Overview
-    - Total number of properties analyzed: 349
-    - Average property price: $1,483,740.88
-    - Median property price: $899,000.00
-    - Average square footage:1,975.33
-  - Property Characteristics
-    - Average number of bedrooms: 3.1
-    - Average number of bathrooms: 2.1
-    - Average price per square foot: $837.90
- - Location Metrics:
-    - Average Walk Score: 83.7
-    - Average Transit Score: 73.7
-    - Average Bike Score: 70.4
+  - A right-skewed price distribution highlighted the prevalence of lower-priced properties with a few luxury outliers.
+  - Scatter plots revealed a positive correlation between square footage and price, with variance increasing for larger properties.
+  - Heatmaps demonstrated strong correlations between square footage and price, bathrooms and price, and moderate correlations with Walk Score and property price.
+- Model Development:
+  - Linear Regression:
+    - Served as the baseline model, leveraging features like location, size, and room count. Achieved an R² score of 0.68 on test data.
+  - Random Forest Regression:
+    - Significantly improved accuracy, achieving an R² score of 0.85. Features like Walk Score and Transit Score were strong contributors to the model’s predictive capability.
+   
+- Clustering Analysis:
+  - Neighborhood clustering using KMeans provided insights into market segmentation. Properties were grouped into three primary clusters: affordable (≤ $600,000), mid-range ($600,001 - $1,200,000), and luxury (≥ $1,200,001). Scatter plots illustrated clear segmentation, with luxury properties concentrated in high-demand areas like downtown Boston.
+- Sentiment Analysis:
+  - Sentiment analysis of listing descriptions revealed interesting trends. Positive sentiment correlated with higher prices, while neutral or negative sentiment had limited impact. However, the overall effect of sentiment scores on model performance was minimal.
+ 
+- Results:
+  - Model Evaluation Metrics
+    - Linear Regression:
+      - Mean Absolute Error (MAE): $124,000
+      - Mean Squared Error (MSE): $275,000,000
+      - R² Score: 0.68
+    - Random Forest Regression:
+      - MAE: $95,000
+      - MSE: $180,000,000
+      - R² Score: 0.85
+  - Clustering Insights
+    - Affordable Properties: Priced at or below $600,000, these properties are typically smaller and located further from city centers.
+    - Mid-Range Properties: Falling between $600,001 and $1,200,000, these homes represent the largest market segment, balancing size and loc
+    - Luxury Properties: Priced above $1,200,000, these listings dominate prime locations and often boast extensive amenities.
+
+
   
-- <img width="731" alt="Screenshot 2024-11-05 at 08 40 31" src="https://github.com/user-attachments/assets/95aff54c-3d81-4c63-9609-26822b0abfa9">
+ ![housing_analysis_results](https://github.com/user-attachments/assets/c15b71d9-1637-4fc7-bdd9-650e16bc8cfe)
+
+
+
  
-  - A right-skewed distribution indicating more properties in the lower price ranges
-  - Several price clusters, suggesting distinct market segments
-  - Notable outliers in the luxury market segment
 
-
-- <img width="754" alt="Screenshot 2024-11-05 at 08 42 02" src="https://github.com/user-attachments/assets/9caac7fa-e0b2-494c-9147-5c00249be620">
-
-  - A strong positive correlation between square footage and price
-  - Increasing variance in price as square footage increases
-
-- <img width="513" alt="Screenshot 2024-11-05 at 08 42 33" src="https://github.com/user-attachments/assets/526ecd00-bc51-461e-adcc-7498de161944">
-  
-  - Strong positive correlation between:
-    - Square footage and price
-    - Number of bathrooms and price
-    - Walk score and transit score
-  - Moderate correlations between:
-    - Number of bedrooms and square footage
-    - Walk score and property price
-
-- Current Implementation and Model Development:
-  - Our current implementation focuses on creating a robust data processing and analysis pipeline for the Boston housing market dataset. The core of our work centers on developing sophisticated location-based analysis and comprehensive data visualization tools to understand housing price patterns, laying the groundwork for future predictive modeling.
-
-- Data Processing Implementation:
-  - Our preprocessing pipeline handles the transformation of raw listing data into analyzable formats. The code first converts all numeric fields (price, square footage, bedrooms, bathrooms) using pandas' to_numeric function with error handling. To ensure data quality, we remove outliers using the 99th percentile threshold for both price and square footage. This is implemented through simple but effective filtering: df = df[df['price'] < df['price'].quantile(0.99)] and df = df[df['sq_ft'] < df['sq_ft'].quantile(0.99)]. Missing values in key fields are dropped to ensure data consistency, though this is something we plan to handle more sophisticatedly in future iterations.
- 
-- Location Feature Engineering
-  - The heart of our current implementation lies in the location extraction and standardization system. We've developed a two-tier approach through the extract_location_improved function that first attempts to find location information in the key_details field using the "New construction:" tag, and if unsuccessful, searches the property description for matches against known Boston neighborhoods. The function handles variations in neighborhood names through a mapping system that standardizes terms like "Southie" to "South Boston" and "JP" to "Jamaica Plain".
- 
-- Location-Based Analysis
-  - The location analysis component of our implementation focuses on understanding price variations across Boston neighborhoods. We calculate and analyze median prices, property counts, and average square footage for each location using pandas' group by functionality. This provides crucial insights into neighborhood-specific market patterns and helps identify price hotspots across the city. The analysis is performed through our analyze_location_stats function, which prints detailed statistics about property distribution and pricing across different neighborhoods.
- 
-- Next Steps: Our immediate next steps involve implementing robust predictive modeling capabilities. While our current implementation excels at data processing and visualization, we're expanding into a multi-faceted modeling approach.
-  - We'll begin with a linear regression baseline for housing price prediction, using features like location, size, and room count, and progressively incorporate more sophisticated models.
-  - Natural language processing will be integrated using NLTK or TextBlob to analyze listing descriptions through sentiment analysis, potentially uncovering how listing language influences pricing.
-  - The modeling strategy will evolve to include deep learning implementations using TensorFlow/PyTorch to capture complex patterns, complemented by K-means clustering to segment neighborhoods based on prices and amenities. Our visualization framework will be extended to include model performance metrics, prediction analysis, scatter plots showing relationships between square footage and price, and heat maps illustrating feature correlations.
-  - We'll also implement cluster visualization to map neighborhoods based on features like price, crime rate, and amenities.
-  - To ensure model reliability, we'll employ an 80/20 train-test split methodology, with cross-validation to assess model accuracy across different data subsets. The clean, structured dataset our current implementation produces will serve as the foundation for these modeling efforts, setting us up for comprehensive predictive analytics capabilities.
 
 - Video presentation: https://youtu.be/gFyMkkLTR7I
