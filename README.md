@@ -1,13 +1,14 @@
 # CS 506 Final Project: Predicting Housing Prices Using Real Estate Data
-- Description: The project aims to predict housing prices based on the size of the house, location, number of rooms, proximity to amenities, and neighborhood characteristics. This will be done using both traditional regression models and more machine learning techniques. Additionally, the project will explore the impact of listing descriptions on prices using sentiment analysis, and segment neighborhoods using clustering methods.
-- Goal:
+- Description
+  - The project aims to predict housing prices based on the size of the house, location, number of rooms, proximity to amenities, and neighborhood characteristics. This will be done using both traditional regression models and more machine learning techniques. Additionally, the project will explore the impact of listing descriptions on prices using sentiment analysis, and segment neighborhoods using clustering methods.
+- Goal
   - Develop accurate housing price prediction models using both traditional regression
 and advanced machine learning techniques
   - Analyze the impact of listing descriptions on house prices through sentiment analysis
   - Identify and categorize neighborhood segments using clustering methods
   - Create an interpretable and practical tool for real estate price estimation
 
-- Dataset Description:
+- Dataset Description
   - The primary dataset consists of Boston housing listings collected from Redfin and stored in
 processed_listings.csv. Key features include:
     - Unique listing identifiers
@@ -50,7 +51,7 @@ processed_listings.csv. Key features include:
     - Average number of bedrooms: 3.1
     - Average number of bathrooms: 2.1
     - Average price per square foot: $837.90
- - Location Metrics:
+ - Location Metrics
     - Average Walk Score: 83.7
     - Average Transit Score: 73.7
     - Average Bike Score: 70.4
@@ -89,11 +90,24 @@ processed_listings.csv. Key features include:
 - Location-Based Analysis
   - The location analysis component of our implementation focuses on understanding price variations across Boston neighborhoods. We calculate and analyze median prices, property counts, and average square footage for each location using pandas' group by functionality. This provides crucial insights into neighborhood-specific market patterns and helps identify price hotspots across the city. The analysis is performed through our analyze_location_stats function, which prints detailed statistics about property distribution and pricing across different neighborhoods.
  
-- Next Steps: Our immediate next steps involve implementing robust predictive modeling capabilities. While our current implementation excels at data processing and visualization, we're expanding into a multi-faceted modeling approach.
+- Next Steps
+  - Our immediate next steps involve implementing robust predictive modeling capabilities. While our current implementation excels at data processing and visualization, we're expanding into a multi-faceted modeling approach.
   - We'll begin with a linear regression baseline for housing price prediction, using features like location, size, and room count, and progressively incorporate more sophisticated models.
   - Natural language processing will be integrated using NLTK or TextBlob to analyze listing descriptions through sentiment analysis, potentially uncovering how listing language influences pricing.
   - The modeling strategy will evolve to include deep learning implementations using TensorFlow/PyTorch to capture complex patterns, complemented by K-means clustering to segment neighborhoods based on prices and amenities. Our visualization framework will be extended to include model performance metrics, prediction analysis, scatter plots showing relationships between square footage and price, and heat maps illustrating feature correlations.
   - We'll also implement cluster visualization to map neighborhoods based on features like price, crime rate, and amenities.
   - To ensure model reliability, we'll employ an 80/20 train-test split methodology, with cross-validation to assess model accuracy across different data subsets. The clean, structured dataset our current implementation produces will serve as the foundation for these modeling efforts, setting us up for comprehensive predictive analytics capabilities.
 
-- Video presentation: https://youtu.be/gFyMkkLTR7I
+- Video presentation
+  - https://youtu.be/gFyMkkLTR7I
+
+### How To Run  
+- requirements for scraping
+  - python, pip, mullvad cli
+  - first run `make venv` followed by `make install`
+  - then run `make scrape` followed by `make extract`
+  - this will create our data sets
+- requirements for running the model
+  - simply run `make`
+- cleaning up
+  - `make clean`
